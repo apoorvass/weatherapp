@@ -261,3 +261,9 @@
     </div>
 </div>
 </div> */}
+// ! This is a brief description of
+        // who we are and what our application is about.
+        // function getRandomCloudImage() {
+        //     const cloudImages = [Cloud1_icon, Cloud2_icon, Cloud3_icon, Cloud4_icon, Cloud5_icon, Cloud6_icon];
+        //     const randomIndex = Math.floor(Math.random() * cloudImages.length);
+        //     return cloudImages[randomIndex];

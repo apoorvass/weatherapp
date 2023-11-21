@@ -23,7 +23,7 @@
     border-radius: 50px;
     margin: 60px;
     height: 30px;
-    width: 630px;
+    width: 870px;
 }
 .search{
     display: flex;
@@ -74,3 +74,7 @@ font-weight: 500
     gap: 15px;
 }
 
+.forecast-button{
+    background-color: transparent;
+    border: 0;
+}

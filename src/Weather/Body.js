@@ -13,6 +13,8 @@ import Cloud4_icon from './Images/img4.png';
 import Cloud5_icon from './Images/img5.png';
 import Cloud6_icon from './Images/img6.png';
 
+
+
 function Body() 
 {
     const api_key = "9d2c282833cb71d207fb02e7c7e9ce8a";
@@ -28,16 +30,39 @@ function Body()
         temp_min: "",
         temp_max: "",
         icon: "01d",
+        Mon_icon: "",
+        Mon_max: "",
+        Mon_min: "",
+        Tue_icon: "",
+        Tue_max: "",
+        Tue_min: "",
+        Wed_icon: "",
+        Wed_max: "",
+        Wed_min: "",
+        Thu_icon: "",
+        Thu_max: "",
+        Thu_min: "",
+        Fri_icon: "",
+        Fri_max: "",
+        Fri_min: "",
+        Sat_icon: "",
+        Sat_max: "",
+        Sat_min: "",
+        Sun_icon: "",
+        Sun_max: "",
+        Sun_min: ""
     });
-
+    
     const [currentDate, setCurrentDate] = useState
     ({
         day: "",
-        days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         month: "",
-        dayOfWeek: "",
+        dayOfWeek: ""
     });
 
+    let [i, seti] = useState(0)
+
+    console.log(i)
     const search = async () => 
     {
         const element = document.getElementsByClassName("searchbar");
@@ -46,7 +71,8 @@ function Body()
             return 0;
         }
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=metric&appid=${api_key}`;
+        const url = `https://api.openweathermap.org/data/2.5/forecast/?q=${element[0].value}&appid=${api_key}`;
+        
 
         try
         {
@@ -59,21 +85,48 @@ function Body()
 
             let data = await response.json();
 
-            if (data.main) 
+
+            console.log(data)
+
+            if (data) 
             {
                 setWeatherData
                 ({
-                    humidity: data.main.humidity,
-                    windSpeed: Math.floor(data.wind.speed),
-                    temperature: Math.floor(data.main.temp),
-                    location: data.name,
-                    description: data.weather[0].main,
-                    temp_min: Math.floor(data.main.temp_min),
-                    temp_max: Math.floor(data.main.temp_max),
-                    icon: data.weather[0].icon
-                });
+
+                    location: data.city.name,
+                    humidity: data.list[i].main.humidity,
+                    windSpeed: Math.floor(data.list[i].wind.speed),
+                    temperature:Math.floor((data.list[i].main.temp)-273.15) ,
+                    description: data.list[i].weather[0].main,
+                    temp_min: Math.floor((data.list[i].main.temp_min)-273.15),
+                    temp_max: Math.floor((data.list[i].main.temp_max)-273.15),
+                    icon: data.list[i].weather[0].icon,
+                    Mon_icon: data.list[1].weather[0].icon,
+                    Mon_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Mon_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    Tue_icon: data.list[2].weather[0].icon,
+                    Tue_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Tue_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    Wed_icon: data.list[3].weather[0].icon,
+                    Wed_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Wed_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    Thu_icon: data.list[4].weather[0].icon,
+                    Thu_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Thu_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    Fri_icon: data.list[5].weather[0].icon,
+                    Fri_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Fri_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    Sat_icon: data.list[6].weather[0].icon,
+                    Sat_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Sat_min: Math.floor((data.list[0].main.temp_min)-273.15),
+                    sun_icon: data.list[7].weather[0].icon,
+                    Sun_max: Math.floor((data.list[1].main.temp_max)-273.15),
+                    Sun_min: Math.floor((data.list[0].main.temp_min)-273.15),
+
+                })
             }
-             else 
+            else
+
             {
                 console.error("Unexpected data format:", data);
             }
@@ -112,8 +165,6 @@ function Body()
         }
 
     },[weatherData])
- 
-
 
     useEffect(() => 
     {
@@ -123,7 +174,6 @@ function Body()
         setCurrentDate
         ({
             day: currentDate.getDate(),
-            days: currentDate.getDays(),
             month: currentDate.toLocaleDateString('en-US', { month: 'long' }),
             dayOfWeek: currentDate.toLocaleDateString('en-US', { weekday: 'long' }),
 
@@ -132,6 +182,7 @@ function Body()
 
     return (
         <div className='main-container'>
+            
             <div className='frontpage'>
                 <div className="search">
                     <input className='searchbar' type='text' placeholder='Search'></input>
@@ -143,7 +194,7 @@ function Body()
                         <div className="weather-location">
                             <h1>{weatherData.location}</h1>
                         </div>
-                        <p weather-forecast-date>{currentDate.dayOfWeek}, {currentDate.month} {currentDate.day}</p>
+                        <p className= "weather-forecast-date">{currentDate.dayOfWeek}, {currentDate.month} {currentDate.day}</p>
                         <p>{weatherData.description}</p>
                     </div>
                     <div className="current-weather-info-wrapper">
@@ -156,54 +207,101 @@ function Body()
                 </div>
                 <hr></hr>
                 <div className='day-weather'>
-                    <div className='cloud'>
-                        <h4>Thu</h4>
-                        <img src={Cloud1_icon} alt="cloud1-icon"></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    
+                    <button className="forecast-button"  onClick={() => {
+                        return( seti(2), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Mon</h4>
+                            <img src={Cloud1_icon} alt="cloud1-icon"></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Mon_max}</p>
+                            <p> {weatherData.Mon_min}</p>
+                           
+                            </div>
+                
                         </div>
-                    </div>
-                    <div className='cloud'>
-                        <h4>Fri</h4>
-                        <img src={Cloud2_icon}></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    </button>
+
+                    <button className="forecast-button"  onClick={() => {
+                        return( seti(3), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Tue</h4>
+                            <img src={Cloud2_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Tue_max}</p>
+                            <p> {weatherData.Tue_min}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className='cloud'>
-                        <h4>Sat</h4>
-                        <img src={Cloud3_icon}></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    </button>
+
+                    <button className="forecast-button"  onClick={() => {
+                        return( seti(4), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Wed</h4>
+                            <img src={Cloud3_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Wed_max}</p>
+                            <p> {weatherData.Wed_min}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className='cloud'>
-                        <h4>Sun</h4>
-                        <img src={Cloud4_icon}></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    </button>
+                    
+                    <button className="forecast-button" onClick={() => {
+                        return( seti(5), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Thu</h4>
+                            <img src={Cloud4_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Thu_max}</p>
+                            <p> {weatherData.Thu_min}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className='cloud'>
-                        <h4>Mon</h4>
-                        <img src={Cloud5_icon}></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    </button>
+
+                    <button className="forecast-button"  onClick={() => {
+                        return( seti(6), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Fri</h4>
+                            <img src={Cloud5_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Fri_max}</p>
+                            <p> {weatherData.Fri_min}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className='cloud'>
-                        <h4>Tue</h4>
-                        <img src={Cloud6_icon}></img>
-                        <div className="forecastMax-Min_temp">
-                        <p> {weatherData.temp_min}</p>
-                        <p> {weatherData.temp_max}</p>
+                    </button>
+
+                    <button className="forecast-button"   onClick={() => {
+                        return( seti(7), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Sat</h4>
+                            <img src={Cloud6_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Sat_max}</p>
+                            <p> {weatherData.Sat_min}</p>
+                            </div>
                         </div>
-                    </div>
+                    </button>
+
+
+                    <button className="forecast-button"  onClick={() => {
+                        return( seti(8), search() );
+                    }}>
+                        <div className='cloud'>
+                            <h4>Sun</h4>
+                            <img src={Cloud6_icon}></img>
+                            <div className="forecastMax-Min_temp">
+                            <p> {weatherData.Sun_max} </p>
+                            <p> {weatherData.Sun_min} </p>
+                            </div>
+                        </div>
+                    </button>
+                    
                 </div>
             </div>
         </div>
