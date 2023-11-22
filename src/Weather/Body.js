@@ -378,12 +378,6 @@ function Body()
     },[weatherData])
 
 
-
-
-
-
-
-
     useEffect(() => 
     {
         const currentDate = new Date();
