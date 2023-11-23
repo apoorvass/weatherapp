@@ -62,7 +62,7 @@ function Body()
         dayOfWeek: ""
     });
 
-    let [i, seti] = useState(0)
+    let [i, seti] = useState(1)
 
     console.log(i)
     const search = async () => 
@@ -421,7 +421,7 @@ function Body()
                 <div className='day-weather'>
                     
                     <button className="forecast-button"  onClick={() => {
-                        return( seti(2), search() );
+                        return( seti(5), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Mon</h4>
@@ -436,7 +436,7 @@ function Body()
                     </button>
 
                     <button className="forecast-button"  onClick={() => {
-                        return( seti(3), search() );
+                        return( seti(10), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Tue</h4>
@@ -449,7 +449,7 @@ function Body()
                     </button>
 
                     <button className="forecast-button"  onClick={() => {
-                        return( seti(4), search() );
+                        return( seti(15), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Wed</h4>
@@ -462,7 +462,7 @@ function Body()
                     </button>
                     
                     <button className="forecast-button" onClick={() => {
-                        return( seti(5), search() );
+                        return( seti(20), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Thu</h4>
@@ -475,7 +475,7 @@ function Body()
                     </button>
 
                     <button className="forecast-button"  onClick={() => {
-                        return( seti(6), search() );
+                        return( seti(25), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Fri</h4>
@@ -488,7 +488,7 @@ function Body()
                     </button>
 
                     <button className="forecast-button"   onClick={() => {
-                        return( seti(7), search() );
+                        return( seti(30), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Sat</h4>
@@ -501,7 +501,7 @@ function Body()
                     </button>
 
                     <button className="forecast-button"  onClick={() => {
-                        return( seti(8), search() );
+                        return( seti(35), search() );
                     }}>
                         <div className='cloud'>
                             <h4>Sun</h4>
