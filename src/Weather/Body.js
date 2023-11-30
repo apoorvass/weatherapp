@@ -361,9 +361,8 @@ function Body()
 
                         <div className= "weather-forecast-date">
                             <p> {weatherData.date.dayOfWeek} {weatherData.date.day} {weatherData.date.month}</p>
+                            <p>{weatherData.description}</p>
                         </div>
-                       
-                        <p className= "weather-forecast-date">{weatherData.description}</p>
                     </div>
 
                     <div className="current-weather-info-wrapper">
