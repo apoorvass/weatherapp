@@ -7,6 +7,7 @@ import Cloud_icon from './Images/cloud-computing.png';
 import Drizzle_icon from './Images/drizzle.png';
 import Rain_icon from './Images/rain.png';
 import Snow_icon from './Images/snow.png';
+import {Iconchanger} from './icons/iconchanger'
 
 function Body() 
 {
@@ -161,153 +162,13 @@ function Body()
 
     },[weatherData])
 
-    useEffect(() => 
-    {
-        if (weatherData.Mon_icon === "01d" || weatherData.Mon_icon === "01n") {
-            setmonicon(Clear_icon);
-        } 
-        else if (weatherData.Mon_icon === "02d" || weatherData.Mon_icon === "02n") {          
-            setmonicon(Cloud_icon);           
-        } 
-        else if (weatherData.Mon_icon === "03d" || weatherData.Mon_icon === "03n") {
-            setmonicon(Drizzle_icon);
-        }
-        else if (weatherData.Mon_icon === "04d" || weatherData.Mon_icon === "04n") {
-            setmonicon(Drizzle_icon);
-        } 
-        else if (weatherData.Mon_icon === "09d" || weatherData.Mon_icon === "09n") {
-            setmonicon(Rain_icon);           
-        } 
-        else if (weatherData.Mon_icon === "10d" || weatherData.Mon_icon === "10n") {     
-            setmonicon(Rain_icon);    
-        } 
-        else if (weatherData.Mon_icon === "13d" || weatherData.Mon_icon === "13n") {  
-            setmonicon(Snow_icon);   
-        } 
-        else {
-            setmonicon(Clear_icon);
-        }
-
-    },[weatherData])
-
-
-    useEffect(() => 
-    {
-        if (weatherData.Tue_icon === "01d" || weatherData.Tue_icon === "01n") {
-            settueicon(Clear_icon);
-        } 
-        else if (weatherData.Tue_icon === "02d" || weatherData.Tue_icon === "02n") {          
-            settueicon(Cloud_icon);           
-        } 
-        else if (weatherData.Tue_icon === "03d" || weatherData.Tue_icon === "03n") {
-            settueicon(Drizzle_icon);
-        }
-        else if (weatherData.Tue_icon === "04d" || weatherData.Tue_icon === "04n") {
-            settueicon(Drizzle_icon);
-        } 
-        else if (weatherData.Tue_icon === "09d" || weatherData.Tue_icon === "09n") {
-            settueicon(Rain_icon);           
-        } 
-        else if (weatherData.Tue_icon === "10d" || weatherData.Tue_icon === "10n") {     
-            settueicon(Rain_icon);    
-        } 
-        else if (weatherData.Tue_icon === "13d" || weatherData.Tue_icon === "13n") {  
-            settueicon(Snow_icon);   
-        } 
-        else {
-            settueicon(Clear_icon);
-        }
-
-    },[weatherData])
-
-
-    useEffect(() => 
-    {
-        if (weatherData.Wed_icon === "01d" || weatherData.Wed_icon === "01n") {
-            setwedicon(Clear_icon);
-        } 
-        else if (weatherData.Wed_icon === "02d" || weatherData.Wed_icon === "02n") {          
-            setwedicon(Cloud_icon);           
-        } 
-        else if (weatherData.Wed_icon === "03d" || weatherData.Wed_icon === "03n") {
-            setwedicon(Drizzle_icon);
-        }
-        else if (weatherData.Wed_icon === "04d" || weatherData.Wed_icon === "04n") {
-            setwedicon(Drizzle_icon);
-        } 
-        else if (weatherData.Wed_icon === "09d" || weatherData.Wed_icon === "09n") {
-            setwedicon(Rain_icon);           
-        } 
-        else if (weatherData.Wed_icon === "10d" || weatherData.Wed_icon === "10n") {     
-            setwedicon(Rain_icon);    
-        } 
-        else if (weatherData.Wed_icon === "13d" || weatherData.Wed_icon === "13n") {  
-            setwedicon(Snow_icon);   
-        } 
-        else {
-            setwedicon(Clear_icon);
-        }
-
-    },[weatherData])
-
-
-    useEffect(() => 
-    {
-        if (weatherData.Thu_icon === "01d" || weatherData.Thu_icon === "01n") {
-            setthuicon(Clear_icon);
-        } 
-        else if (weatherData.Thu_icon === "02d" || weatherData.Thu_icon === "02n") {          
-            setthuicon(Cloud_icon);           
-        } 
-        else if (weatherData.Thu_icon === "03d" || weatherData.Thu_icon === "03n") {
-            setthuicon(Drizzle_icon);
-        }
-        else if (weatherData.Thu_icon === "04d" || weatherData.Thu_icon === "04n") {
-            setthuicon(Drizzle_icon);
-        } 
-        else if (weatherData.Thu_icon === "09d" || weatherData.Thu_icon === "09n") {
-            setthuicon(Rain_icon);           
-        } 
-        else if (weatherData.Thu_icon === "10d" || weatherData.Thu_icon === "10n") {     
-            setthuicon(Rain_icon);    
-        } 
-        else if (weatherData.Thu_icon === "13d" || weatherData.Thu_icon === "13n") {  
-            setthuicon(Snow_icon);   
-        } 
-        else {
-            setthuicon(Clear_icon);
-        }
-
-    },[weatherData])
-
-
-    useEffect(() => 
-    {
-        if (weatherData.Fri_icon === "01d" || weatherData.Fri_icon === "01n") {
-            setfriicon(Clear_icon);
-        } 
-        else if (weatherData.Fri_icon === "02d" || weatherData.Fri_icon === "02n") {          
-            setfriicon(Cloud_icon);           
-        } 
-        else if (weatherData.Fri_icon === "03d" || weatherData.Fri_icon === "03n") {
-            setfriicon(Drizzle_icon);
-        }
-        else if (weatherData.Fri_icon === "04d" || weatherData.Fri_icon === "04n") {
-            setfriicon(Drizzle_icon);
-        } 
-        else if (weatherData.Fri_icon === "09d" || weatherData.Fri_icon === "09n") {
-            setfriicon(Rain_icon);           
-        } 
-        else if (weatherData.Fri_icon === "10d" || weatherData.Fri_icon === "10n") {     
-            setfriicon(Rain_icon);    
-        } 
-        else if (weatherData.Fri_icon === "13d" || weatherData.Fri_icon === "13n") {  
-            setfriicon(Snow_icon);   
-        } 
-        else {
-            setfriicon(Clear_icon);
-        }
-
+    
+    useEffect(()=>{
+        Iconchanger({weathericon:weatherData.Mon_icon,seticon : setmonicon});
+        Iconchanger({weathericon:weatherData.Tue_icon,seticon : settueicon});
+        Iconchanger({weathericon:weatherData.Wed_icon,seticon : setwedicon});
+        Iconchanger({weathericon:weatherData.Thu_icon,seticon : setthuicon});
+        Iconchanger({weathericon:weatherData.Fri_icon,seticon : setfriicon});
     },[weatherData])
 
 
